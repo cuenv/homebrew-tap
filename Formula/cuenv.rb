@@ -1,8 +1,8 @@
 class Cuenv < Formula
   desc "Modern application build toolchain with typed environments and CUE-powered task orchestration"
   homepage "https://github.com/cuenv/cuenv"
-  url "https://github.com/cuenv/cuenv/archive/refs/tags/0.15.2.tar.gz"
-  sha256 "fd20b9eae8569d2fc981f5cc37301966ae2a1c6a0389c029e61decf525174677"
+  url "https://github.com/cuenv/cuenv/archive/refs/tags/0.15.3.tar.gz"
+  sha256 "23d9a5fa0fc0aa0f19b1ffcf0377c4a91c12e808f0586487421f7c15d10864ae"
   license "AGPL-3.0-or-later"
   head "https://github.com/cuenv/cuenv.git", branch: "main"
 
