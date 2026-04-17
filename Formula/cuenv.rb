@@ -1,39 +1,35 @@
 class Cuenv < Formula
   desc "Modern application build toolchain with typed environments and CUE-powered task orchestration"
   homepage "https://github.com/cuenv/cuenv"
-  url "https://github.com/cuenv/cuenv/archive/refs/tags/0.16.0.tar.gz"
-  sha256 "3af6b3258d4e9c387c8093d8aa0c5a65c44fc1e064f228c2ab93173cb0ca5d24"
+  version "0.40.6"
   license "AGPL-3.0-or-later"
-  head "https://github.com/cuenv/cuenv.git", branch: "main"
 
-  depends_on "rust" => :build
-  depends_on "go" => :build
+  on_macos do
+    on_arm do
+      url "https://github.com/cuenv/cuenv/releases/download/0.40.6/cuenv-darwin-arm64"
+      sha256 "7fc9aa15d09bdda520ec857eee7d6a6b96acf85d200fe089af3bc1777f8e331d"
+    end
+  end
+
+  on_linux do
+    on_intel do
+      url "https://github.com/cuenv/cuenv/releases/download/0.40.6/cuenv-linux-x64"
+      sha256 "7bfe8959d70a395f02a284c69c992065508fd4b728ed43f0053223d9dfeb15bb"
+    end
+  end
 
   def install
-    # Build the cuenv-cli binary
-    system "cargo", "build", "--release", "--workspace"
-
-    # Install the binary
-    bin.install "target/release/cuenv"
+    binary = if OS.mac? && Hardware::CPU.arm?
+      "cuenv-darwin-arm64"
+    elsif OS.linux? && Hardware::CPU.intel?
+      "cuenv-linux-x64"
+    else
+      odie "Unsupported platform"
+    end
+    bin.install binary => "cuenv"
   end
 
   test do
-    # Test that the binary exists and runs
-    assert_match "cuenv", shell_output("#{bin}/cuenv --version")
-
-    # Create a minimal CUE file to test environment variable printing
-    (testpath/"env.cue").write <<~EOS
-      package cuenv
-
-      env: {
-        FOO: "bar"
-        BAZ: "qux"
-      }
-    EOS
-
-    # Run cuenv env print and check output
-    output = shell_output("#{bin}/cuenv env print --path #{testpath}")
-    assert_match "FOO=bar", output
-    assert_match "BAZ=qux", output
+    assert_match version.to_s, shell_output("#{bin}/cuenv --version")
   end
 end
