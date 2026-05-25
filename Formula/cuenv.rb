@@ -1,25 +1,25 @@
 class Cuenv < Formula
   desc "Modern application build toolchain with typed environments and CUE-powered task orchestration"
   homepage "https://github.com/cuenv/cuenv"
-  version "0.42.0"
+  version "0.43.0"
   license "AGPL-3.0-or-later"
 
   on_macos do
     on_arm do
-      url "https://github.com/cuenv/cuenv/releases/download/0.42.0/cuenv-darwin-arm64"
-      sha256 "c5c8a2a33c570ffb452d4d1586de0360e8b87410b7dc1245a381e7e3d29c7bd1"
+      url "https://github.com/cuenv/cuenv/releases/download/0.43.0/cuenv-darwin-arm64"
+      sha256 "2fb6416da8e16842a38bad4ea193dc833936633c926e4139f1a4c9f106507cba"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/cuenv/cuenv/releases/download/0.42.0/cuenv-linux-x64"
-      sha256 "968ff47c85f2c6473686835d8eb33a038fe0138c9428ad647d0e2fda1261fe6a"
+      url "https://github.com/cuenv/cuenv/releases/download/0.43.0/cuenv-linux-x64"
+      sha256 "926a0b0c13ab4b848d2cf5597449fc6839e0335a15f412740aecc5e3a4efe391"
     end
 
     on_arm do
-      url "https://github.com/cuenv/cuenv/releases/download/0.42.0/cuenv-linux-arm64"
-      sha256 "e3e6e01881125481b7b3493eb8d6f7bae69d35617e9acfd6b89157c2d3aee5ce"
+      url "https://github.com/cuenv/cuenv/releases/download/0.43.0/cuenv-linux-arm64"
+      sha256 "7765b78b5cd0ed924d2dbe26c81427f36762ca6e3803db8bf668936fe0c60396"
     end
   end
 
